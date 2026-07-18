@@ -10,7 +10,7 @@ class Solution {
         while(left<=right){
             
             if(nums[left]<=nums[right]){
-                min = Integer.min(min,nums[left]);
+                min = Math.min(min,nums[left]);
                 return min;
             }
 
@@ -18,11 +18,11 @@ class Solution {
 
             if(nums[left]<=nums[mid]){
 
-                min = Integer.min(min, nums[left]);
+                min = Math.min(min, nums[left]);
                 left = mid+1;
             }
             else{
-                min = Integer.min(min, nums[mid]);
+                min = Math.min(min, nums[mid]);
                 right = mid-1;
             }
         }
