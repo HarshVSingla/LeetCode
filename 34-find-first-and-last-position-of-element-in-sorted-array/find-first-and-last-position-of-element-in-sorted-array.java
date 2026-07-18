@@ -57,7 +57,7 @@ class Solution {
 
             }
 
-            if(nums[mid]<target){
+            else if(nums[mid]<target){
                 left = mid+1;
             }
             else{
@@ -85,7 +85,7 @@ class Solution {
                     left = mid+1;
                 }
 
-                if(nums[mid]>target){
+                else if(nums[mid]>target){
                     right = mid-1;
                 }
                 else{
