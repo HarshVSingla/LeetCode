@@ -5,6 +5,7 @@ class Solution {
 
         int left =0;
         int count=0;
+
         HashMap<Character,Integer> map = new HashMap<>();
 
         for(int right=0;right<n;right++){
