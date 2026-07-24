@@ -13,16 +13,36 @@ class Solution {
 
         // Recursive approach 
 
+        // if(head==null || head.next == null){
+        //     return head;
+        // }
+
+        // ListNode newhead = reverseList(head.next);
+
+        // ListNode front = head.next;
+        // front.next = head;
+        // head.next = null;
+        // return newhead;
+
+
+        // 2nd approach - standard approach
+
+
         if(head==null || head.next == null){
             return head;
         }
 
-        ListNode newhead = reverseList(head.next);
+        ListNode temp = head;
+        ListNode prev = null;
 
-        ListNode front = head.next;
-        front.next = head;
-        head.next = null;
-        return newhead;
+        while(temp!=null){
+            ListNode front = temp.next;
+            temp.next = prev;
+            prev = temp;
+            temp = front;
+        }
+
+        return prev;
         
     }
 }
