@@ -11,61 +11,61 @@
 class Solution {
     public ListNode removeNodes(ListNode head) {
         
-        ListNode curr = head;
-        ListNode prev = null;
+        // ListNode curr = head;
+        // ListNode prev = null;
 
-        while(curr!=null){
-            ListNode Next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = Next;
-        }
-        ListNode reverseagain = prev;
-        int max = prev.val;
-        ListNode newcurr = prev.next;
+        // while(curr!=null){
+        //     ListNode Next = curr.next;
+        //     curr.next = prev;
+        //     prev = curr;
+        //     curr = Next;
+        // }
+        // ListNode reverseagain = prev;
+        // int max = prev.val;
+        // ListNode newcurr = prev.next;
 
-        while(newcurr!=null){
-            if(newcurr.val < max){
-                prev.next = newcurr.next;
-                newcurr = newcurr.next;
-            }
-            else{
-                prev = newcurr;
-                max = prev.val;
-                newcurr = newcurr.next;
+        // while(newcurr!=null){
+        //     if(newcurr.val < max){
+        //         prev.next = newcurr.next;
+        //         newcurr = newcurr.next;
+        //     }
+        //     else{
+        //         prev = newcurr;
+        //         max = prev.val;
+        //         newcurr = newcurr.next;
 
-            }
+        //     }
 
-        }
+        // }
 
-        ListNode newprev = null;
-        while(reverseagain!=null){
-            ListNode newNe= reverseagain.next;
-            reverseagain.next = newprev;
-            newprev = reverseagain;
-            reverseagain = newNe;
-        }
+        // ListNode newprev = null;
+        // while(reverseagain!=null){
+        //     ListNode newNe= reverseagain.next;
+        //     reverseagain.next = newprev;
+        //     newprev = reverseagain;
+        //     reverseagain = newNe;
+        // }
 
-        return newprev;
+        // return newprev;
 
 
 
         // 2nd approach - recursion
 
-    //     if(head == null || head.next==null){
-    //         return head;
-    //     }
+        if(head == null || head.next==null){
+            return head;
+        }
 
-    //     ListNode newhead = removeNodes(head.next);
+        ListNode newhead = removeNodes(head.next);
         
-    //     if(head.val >= newhead.val){
-    //         head.next = newhead;
-    //         newhead = head;
-    //         return newhead;
-    //     }
-    //     else{
-    //         head.next = null;
-    //         return newhead;
-    //     }
+        if(head.val >= newhead.val){
+            head.next = newhead;
+            newhead = head;
+            return newhead;
+        }
+        else{
+            head.next = null;
+            return newhead;
+        }
     }
 }
