@@ -18,35 +18,48 @@ class Solution {
         
         // 2nd approach -> Using queue 
 
-        Deque<int[]> q = new ArrayDeque<>();
+        // Deque<int[]> q = new ArrayDeque<>();
+        // int n = tickets.length;
+
+        // for(int i =0;i<n;i++){
+        //     q.offer(new int[]{i,tickets[i]});
+        // }
+        // int count=0;
+        // while(!q.isEmpty()){
+        //     int[] person = q.poll();
+        //     person[1]--;
+        //     count++;
+        //     // 1 <= tickets[i] <= 100 , element cannot be already 0.
+        //     if(person[1]==0){
+        //         if(person[0]==k){
+        //             return count;
+        //         }
+        //     }
+        //     else{
+        //         q.offer(person);
+        //     }
+        // }
+        // return count;
+
+
+        // 3rd approach -> Most Optimal
 
         int n = tickets.length;
+        int count =0;
 
-        for(int i =0;i<n;i++){
-            q.offer(new int[]{i,tickets[i]});
-        }
+        int x = tickets[k];
 
-        int count=0;
+        for(int i=0;i<n;i++){
 
-        while(!q.isEmpty()){
-
-            int[] person = q.poll();
-
-            person[1]--;
-            count++;
-            // 1 <= tickets[i] <= 100 , element cannot be already 0.
-
-            if(person[1]==0){
-                if(person[0]==k){
-                    return count;
-                }
+            if(i<=k){
+                count+= Math.min(tickets[i],x);
             }
             else{
-                q.offer(person);
+                count+= Math.min(tickets[i],x-1);
             }
-        }
+        }      
 
-        return count;
+        return count;  
 
     }
 }
