@@ -13,19 +13,36 @@ public class Solution {
     public boolean hasCycle(ListNode head) {
 
 
-        if(head==null || head.next==null){
-            return false;
-        }
+        // if(head==null || head.next==null){
+        //     return false;
+        // }
 
-        ListNode slow = head;
-        ListNode fast = head;
+        // ListNode slow = head;
+        // ListNode fast = head;
 
-        while(fast!=null && fast.next!=null){
-            slow = slow.next;
-            fast = fast.next.next;
+        // while(fast!=null && fast.next!=null){
+        //     slow = slow.next;
+        //     fast = fast.next.next;
 
 
-            if(fast==slow){
+        //     if(fast==slow){
+        //         return true;
+        //     }
+        // }
+
+        // return false;
+
+
+        HashSet<ListNode> set = new HashSet<>();
+
+        ListNode temp = head;
+
+        while(temp!=null){
+            if(!set.contains(temp)){
+                set.add(temp);
+                temp = temp.next;
+            }
+            else{
                 return true;
             }
         }
