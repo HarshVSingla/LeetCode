@@ -11,38 +11,73 @@
 class Solution {
     public boolean isPalindrome(ListNode head) {
         
+        // if(head==null){
+        //     return false;
+        // }
+
+        // if(head.next==null){
+        //     return true;
+        // }
+
+        // ListNode slow = head;
+        // ListNode fast = head;
+
+        // while(fast!=null && fast.next!=null){
+        //     slow = slow.next;
+        //     fast = fast.next.next;
+        // }
+
+        // ListNode prev = null;
+        // while(slow!=null){
+        //     ListNode nextnode = slow.next;
+        //     slow.next = prev;
+        //     prev = slow;
+        //     slow = nextnode;
+        // }
+
+        // while(head!=null && prev!=null){
+        //     if(head.val != prev.val){
+        //         return false;
+        //     }
+        //     head = head.next;
+        //     prev = prev.next;
+        // }
+
+        // return true;
+
+
+        // 2nd approach -> stack
+
         if(head==null){
             return false;
         }
-
         if(head.next==null){
             return true;
         }
+
+        Deque<Integer> st = new ArrayDeque<>();
 
         ListNode slow = head;
         ListNode fast = head;
 
         while(fast!=null && fast.next!=null){
+            st.push(slow.val);
             slow = slow.next;
             fast = fast.next.next;
         }
 
-        ListNode prev = null;
-        while(slow!=null){
-            ListNode nextnode = slow.next;
-            slow.next = prev;
-            prev = slow;
-            slow = nextnode;
+        if(fast!=null){
+            slow = slow.next;
         }
 
-        while(head!=null && prev!=null){
-            if(head.val != prev.val){
+        while(!st.isEmpty()){
+            if(st.pop()!=slow.val){
                 return false;
             }
-            head = head.next;
-            prev = prev.next;
+            slow = slow.next;
         }
 
-        return true;       
+        return true;
+
     }
 }
