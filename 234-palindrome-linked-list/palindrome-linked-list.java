@@ -35,16 +35,14 @@ class Solution {
             slow = nextnode;
         }
 
-        boolean h = true;
         while(head!=null && prev!=null){
             if(head.val != prev.val){
-                h = false;
-                break;
+                return false;
             }
             head = head.next;
             prev = prev.next;
         }
 
-        return h;        
+        return true;       
     }
 }
