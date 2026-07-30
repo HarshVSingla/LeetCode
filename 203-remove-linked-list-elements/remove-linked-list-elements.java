@@ -11,23 +11,38 @@
 class Solution {
     public ListNode removeElements(ListNode head, int val) {
 
+        // if(head==null){
+        //     return null;
+        // }
+
+        // while(head!=null && head.val == val){
+        //     head = head.next;
+        // }
+
+        // ListNode temp = head;
+
+        // while(temp!=null && temp.next!=null){
+        //     if(temp.next.val == val){
+        //         temp.next = temp.next.next;
+        //     }
+        //     else{
+        //         temp = temp.next;
+        //     }
+        // }
+
+        // return head;
+
+
+        // 2. recurrsion approach;
+
         if(head==null){
             return null;
         }
 
-        while(head!=null && head.val == val){
-            head = head.next;
-        }
+        head.next = removeElements(head.next,val);
 
-        ListNode temp = head;
-
-        while(temp!=null && temp.next!=null){
-            if(temp.next.val == val){
-                temp.next = temp.next.next;
-            }
-            else{
-                temp = temp.next;
-            }
+        if(head.val==val){
+            return head.next;
         }
 
         return head;
