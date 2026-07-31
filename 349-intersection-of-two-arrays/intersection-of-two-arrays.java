@@ -9,17 +9,26 @@ class Solution {
     }
 
     for(int x : nums2){
-        set2.add(x);
+        if(set.contains(x)){
+            set2.add(x);
+        }
     }
 
-    set.retainAll(set2);
-
-    int[] ans = new int[set.size()];
+    
+    int[] ans = new int[set2.size()];
     int a =0;
-    for(Integer x : set){
+    for(Integer x : set2){
         ans[a++] = x;
     }
 
     return ans;
+
+
+
+    // 2nd approach: 
+
+
+
+
     }
 }
