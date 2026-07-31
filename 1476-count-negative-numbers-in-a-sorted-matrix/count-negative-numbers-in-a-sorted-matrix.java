@@ -7,29 +7,48 @@ class Solution {
 
         // 1st approach - binary of every array
 
-        for(int i=0;i<m;i++){
+        // for(int i=0;i<m;i++){
 
-            int left=0;
-            int right = n-1;
-            int idx=n;
+        //     int left=0;
+        //     int right = n-1;
+        //     int idx=n;
 
-            while(left<=right){
+        //     while(left<=right){
 
-                int mid = left+(right-left)/2;
+        //         int mid = left+(right-left)/2;
 
-                if(grid[i][mid]>=0){
-                    left = mid+1;
-                }
-                else{
-                    idx = mid;
-                    right = mid-1;
-                }
+        //         if(grid[i][mid]>=0){
+        //             left = mid+1;
+        //         }
+        //         else{
+        //             idx = mid;
+        //             right = mid-1;
+        //         }
+        //     }
+
+        //     count+= n-idx;
+
+        // }
+        // return count;
+
+
+        // 2nd approach - optimal - follow up
+
+        int row = m-1;
+        int col =0;
+        
+
+        while(col<n && row>=0){
+
+            if(grid[row][col]<0){
+                count+= n-col;
+                row--;
             }
-
-            count+= n-idx;
-
+            else{
+                col++;
+            }
         }
         return count;
-        
+
     }
 }
