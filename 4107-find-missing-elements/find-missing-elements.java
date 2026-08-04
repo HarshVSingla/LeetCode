@@ -4,9 +4,6 @@ class Solution {
         List<Integer> ans = new ArrayList<>();
         HashSet<Integer> set = new HashSet<>();
 
-        if(nums.length== 0){
-            return ans;
-        }
         int n = nums.length;
 
         int max = nums[0];
