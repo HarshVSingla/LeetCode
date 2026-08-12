@@ -1,33 +1,53 @@
 class Solution {
     public int[] finalPrices(int[] prices) {
 
-        int n = prices.length;
+        // 1st approach
 
-        int[] ans = new int[n];
+        // int n = prices.length;
 
-        for(int i=0;i<n-1;i++){
+        // int[] ans = new int[n];
 
-            boolean h = false;
-            int inx = i;
-            for(int j=i+1;j<n;j++){
+        // for(int i=0;i<n-1;i++){
+
+        //     boolean h = false;
+        //     int inx = i;
+        //     for(int j=i+1;j<n;j++){
                 
-                if(prices[j]<=prices[i]){
-                    h = true;
-                    inx = j;
-                    break;
-                }
+        //         if(prices[j]<=prices[i]){
+        //             h = true;
+        //             inx = j;
+        //             break;
+        //         }
+        //     }
+        //     if(h){
+        //         ans[i] = prices[i] - prices[inx];
+        //     }
+        //     else{
+        //         ans[i] = prices[i];
+        //     }
+        // }
+
+        // ans[n-1] = prices[n-1];
+
+        // return ans;
+
+
+        Deque<Integer> st = new ArrayDeque<>();
+
+        for(int i= prices.length-1;i>=0;i--){
+
+            while(!st.isEmpty() && st.peek()>prices[i]){
+                st.pop();
             }
-            if(h){
-                ans[i] = prices[i] - prices[inx];
+            int original = prices[i];
+            if(!st.isEmpty()){
+                prices[i] = prices[i] - st.peek();
             }
-            else{
-                ans[i] = prices[i];
-            }
+
+            st.push(original);
+
         }
 
-        ans[n-1] = prices[n-1];
-
-        return ans;
-        
+        return prices;
     }
 }
