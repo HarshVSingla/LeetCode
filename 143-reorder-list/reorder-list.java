@@ -15,50 +15,87 @@ class Solution {
             return ;
         }
 
+        // ListNode slow = head;
+        // ListNode fast = head;
+        // ListNode end = head;
+
+        // while(fast!=null && fast.next!=null){
+        //     fast = fast.next.next;
+        //     end = slow;
+        //     slow = slow.next;
+
+        // }
+
+        // ListNode prev = null;
+        // ListNode temp = slow;
+
+        // end.next= null;
+
+
+        // while(temp!=null){
+        //     ListNode nextnode= temp.next;
+        //     temp.next = prev;
+        //     prev = temp;
+        //     temp = nextnode;
+        // }
+
+        // temp = head;
+        // while(temp.next!=null && prev.next!=null){
+        //     ListNode nextor = temp.next;
+        //     ListNode nextre = prev.next;
+
+        //     temp.next = prev;
+        //     prev.next = nextor;
+        //     temp = nextor;
+        //     prev = nextre;
+        // }
+
+        // if(temp.next==null){
+        //     temp.next = prev;
+        // }
+        // else{
+        //     prev.next = temp;
+        // }
+
+
+        // return ;
+
+
+        // optimising 
+        
+
+        
         ListNode slow = head;
         ListNode fast = head;
-        ListNode end = head;
 
-        while(fast!=null && fast.next!=null){
-            fast = fast.next.next;
-            end = slow;
+        while(fast!=null&&  fast.next!=null){
+            fast= fast.next.next;
             slow = slow.next;
-
         }
+
+        ListNode second = slow.next;
+        slow.next = null;
 
         ListNode prev = null;
-        ListNode temp = slow;
+        while(second!=null){
+            ListNode nextnode= second.next;
+            second.next = prev;
+            prev = second;
+            second =nextnode;
+        }
 
-        end.next= null;
+        ListNode temp = head;
 
-
-        while(temp!=null){
-            ListNode nextnode= temp.next;
+        while(prev!=null){
+            ListNode next1 =temp.next;
+            ListNode next2 =prev.next;
             temp.next = prev;
-            prev = temp;
-            temp = nextnode;
-        }
+            prev.next = next1;
 
-        temp = head;
-        while(temp.next!=null && prev.next!=null){
-            ListNode nextor = temp.next;
-            ListNode nextre = prev.next;
-
-            temp.next = prev;
-            prev.next = nextor;
-            temp = nextor;
-            prev = nextre;
+            temp= next1;
+            prev = next2;
         }
-
-        if(temp.next==null){
-            temp.next = prev;
-        }
-        else{
-            prev.next = temp;
-        }
-
 
         return ;
-        
     }
 }
