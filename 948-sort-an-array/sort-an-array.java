@@ -20,36 +20,37 @@ class Solution {
         mergesort(arr,low,mid);
         mergesort(arr,mid+1,high);
         merge(arr,low,mid,high);
-        return;
+        
     }
 
     private static void merge(int arr[],int low, int mid, int high){
 
-        List<Integer> temp = new ArrayList<>();
+        int[] temp = new int[high-low+1];
 
         int left = low;
         int right = mid+1;
+        int a=0;
 
         while(left<=mid && right<= high){
             if(arr[left]<=arr[right]){
-                temp.add(arr[left++]);
+                temp[a++]= arr[left++];
             }
             else{
-                temp.add(arr[right++]);
+                temp[a++] = arr[right++];
             }
         }
 
         while(left<=mid){
-            temp.add(arr[left++]);
+            temp[a++]= arr[left++];
         }
         while(right<=high){
-            temp.add(arr[right++]);
+            temp[a++] = arr[right++];
         }
 
-        for(int i=low;i<=high;i++){
-            arr[i] = temp.get(i-low);
+        for(int i=0;i<temp.length;i++){
+            arr[low+i] = temp[i];
         }
-        return;
+        
 
     }
 }
